@@ -3,7 +3,9 @@ package com.example.examen_daniel_labarca.db
 import android.graphics.Bitmap
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
+import androidx.room.Entity
 
+@Entity
 data class PlaceEntity(
 
     @PrimaryKey(autoGenerate = true)
