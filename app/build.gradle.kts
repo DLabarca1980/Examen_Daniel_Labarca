@@ -95,7 +95,8 @@ dependencies {
     // Open Street Map (osmdroid)
     implementation("org.osmdroid:osmdroid-android:6.1.16")
 
-
+    // Dependencia Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     //ROOM
 
