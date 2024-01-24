@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
-
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -108,7 +108,7 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     //kapt("androidx.room:room-compiler:$room_version")
     // To use Kotlin Symbol Processing (KSP)
-    ksp("androidx.room:room-compiler:$room_version")
+    ksp("androidx.room:room-compiler:2.6.1")
 
     //ksp("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.13")
 
