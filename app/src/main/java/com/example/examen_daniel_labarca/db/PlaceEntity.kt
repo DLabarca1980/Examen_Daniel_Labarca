@@ -16,7 +16,7 @@ data class PlaceEntity(
     var imgRef : Bitmap?,
 
     @ColumnInfo
-    var longitud : Double,
+    var longitud : Double?,
 
     @ColumnInfo
     var latitud : Double?,

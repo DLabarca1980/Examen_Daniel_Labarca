@@ -1,7 +1,7 @@
 package com.example.examen_daniel_labarca
 
 import android.content.Context
-import android.health.connect.datatypes.ExerciseRoute.Location
+
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -34,7 +34,10 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
-import java.lang.reflect.Modifier
+import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.height
+import android.location.Location
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,7 +77,7 @@ fun MapUI(appVM: AppVM, formVM: FormVM, permissionLauncher: ActivityResultLaunch
         Button(onClick = {
 
             routineScope.launch(Dispatchers.IO) {
-                AppDatabase.getInstace(context).placeDao().updateLatLon(formVM.id.value, lat, lon)
+                AppDatabase.getInstance(context).placeDao().updateLatLon(formVM.id.value, lat, lon)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(context, "Lugar agregado", Toast.LENGTH_SHORT).show()
@@ -88,7 +91,9 @@ fun MapUI(appVM: AppVM, formVM: FormVM, permissionLauncher: ActivityResultLaunch
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(onClick = { appVM.currentScreen.value = Screen.Form }) {
+        Button(onClick = { appVM.currentScreen.value =
+            com.example.examen_daniel_labarca.Screen.Form
+        }) {
             Text(text = "Volver")
         }
 

@@ -31,7 +31,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -41,7 +41,9 @@ import com.example.examen_daniel_labarca.db.PlaceEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.reflect.Modifier
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
+
 
 class MainActivity : ComponentActivity() {
 
@@ -114,7 +116,7 @@ fun listPlacesUI(appVM: AppVM,
 
     LaunchedEffect(places) {
         withContext(Dispatchers.IO) {
-            val dao = AppDatabase.getInstace(context).placeDao()
+            val dao = AppDatabase.getInstance(context).placeDao()
             setplaces(dao.findAll())
         }
     }
@@ -179,7 +181,7 @@ fun PlaceItem(place: PlaceEntity, appVM: AppVM,formVM: FormVM, onSave:() -> Unit
                     .clickable { appVM.currentScreen.value = Screen.Camera }
             )
         } ?: Image(
-            painter = painterResource(id = R.drawable.fototest),
+            painter = painterResource(id = R.drawable.foto),
             contentDescription = "foto de lugar",
             modifier = Modifier
                 .size(150.dp)
@@ -200,7 +202,7 @@ fun PlaceItem(place: PlaceEntity, appVM: AppVM,formVM: FormVM, onSave:() -> Unit
             Row {
                 Icon(Icons.TwoTone.Delete, contentDescription = "Delete", Modifier.clickable {
                     routineScope.launch(Dispatchers.IO) {
-                        val dao = AppDatabase.getInstace(context).placeDao()
+                        val dao = AppDatabase.getInstance(context).placeDao()
                         dao.delete(place)
                         onSave()
                     }

@@ -29,7 +29,8 @@ import com.example.examen_daniel_labarca.ws.Factory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.reflect.Modifier
+import androidx.compose.ui.Modifier
+
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -127,7 +128,7 @@ fun addPlace(appVM : AppVM, formVM : FormVM) {
 
         Button(onClick = {
             routineScope.launch(Dispatchers.IO) {
-                val dao = AppDatabase.getInstace(context).placeDao()
+                val dao = AppDatabase.getInstance(context).placeDao()
                 val newPlace = PlaceEntity(
                     0,
                     lugar,
@@ -156,7 +157,9 @@ fun addPlace(appVM : AppVM, formVM : FormVM) {
             Text(text = "Guardar")
         }
         Spacer(modifier =   Modifier.padding(16.dp))
-        Button(onClick = { appVM.currentScreen.value = Screen.Form }) {
+        Button(onClick = { appVM.currentScreen.value =
+            com.example.examen_daniel_labarca.Screen.Form
+        }) {
             Text(text = "Volver")
         }
     }

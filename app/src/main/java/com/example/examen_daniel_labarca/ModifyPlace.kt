@@ -4,6 +4,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,7 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -27,7 +29,6 @@ import com.example.examen_daniel_labarca.ws.Factory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.reflect.Modifier
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -123,7 +124,7 @@ fun ModifyPlace(appVM: AppVM, formVM: FormVM) {
 
         Button(onClick = {
             routineScope.launch(Dispatchers.IO) {
-                val dao = AppDatabase.getInstace(context).placeDao()
+                val dao = AppDatabase.getInstance(context).placeDao()
                 dao.updatePlace(
                     formVM.id.value,
                     lugar,
@@ -142,13 +143,15 @@ fun ModifyPlace(appVM: AppVM, formVM: FormVM) {
                 costoMovilizacion = ""
                 comentarios = ""
 
-                appVM.currentScreen.value = Screen.Form
+                appVM.currentScreen.value = com.example.examen_daniel_labarca.Screen.Form
             }
         }) {
             Text(text = "Modificar")
         }
         Spacer(modifier =   Modifier.padding(16.dp))
-        Button(onClick = { appVM.currentScreen.value = Screen.Form }) {
+        Button(onClick = { appVM.currentScreen.value =
+            com.example.examen_daniel_labarca.Screen.Form
+        }) {
             Text(text = "Volver")
         }
 

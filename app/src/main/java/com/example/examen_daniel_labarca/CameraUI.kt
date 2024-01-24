@@ -12,6 +12,7 @@ import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,13 +20,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import com.example.examen_daniel_labarca.db.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
-import java.lang.reflect.Modifier
+//import java.lang.reflect.Modifier
 import java.text.Normalizer.Form
 
 @Composable
@@ -47,11 +49,11 @@ fun CameraUI(cameraController: LifecycleCameraController, permissionLauncher : A
                    file = makePrivatePhotoFile (context),
                     context = context)  {
             routineScope.launch (Dispatchers.IO) {
-                val dao = AppDatabase.getInstace(context.placeDAO()
+                val dao = AppDatabase.getInstance(context).placeDao()
                 formVM.photo.value = it
                 dao.updateImgRef(formVM.id.value, it)
             }
-                    appVM.currentScreen.value = Screen.Form
+                    appVM.currentScreen.value = com.example.examen_daniel_labarca.Screen.Form
         }
          },
         modifier = Modifier
@@ -96,4 +98,4 @@ fun makePrivatePhotoFile(context: Context) : File = File (
     context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "${System.currentTimeMillis()}.jpg"
 )
 
-}
+
