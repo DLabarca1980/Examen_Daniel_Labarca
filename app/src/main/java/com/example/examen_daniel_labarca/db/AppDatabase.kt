@@ -10,7 +10,7 @@ import androidx.room.TypeConverters
 @TypeConverters(Converters::class)
 
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun placeDao() : PlaceDao
+    abstract fun placeDao() : PlaceDAO
 
     companion object {
         @Volatile

@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
-    id("com.google.devtools.ksp")
+    //id("com.google.devtools.ksp")
 }
 
 android {
@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.examen_daniel_labarca"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
@@ -109,7 +109,7 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     //kapt("androidx.room:room-compiler:$room_version")
     // To use Kotlin Symbol Processing (KSP)
-    ksp("androidx.room:room-compiler:2.6.1")
+    //ksp("androidx.room:room-compiler:2.6.1")
 
     //ksp("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.13")
 
