@@ -136,6 +136,8 @@ dependencies {
     implementation("com.squareup.moshi:moshi:1.14.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
 
+    // Coik dependencia
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
     }
 
