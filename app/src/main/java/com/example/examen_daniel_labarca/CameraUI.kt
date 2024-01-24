@@ -1,5 +1,6 @@
 package com.example.examen_daniel_labarca
 
+//import java.lang.reflect.Modifier
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -17,18 +18,15 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import com.example.examen_daniel_labarca.db.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
-//import java.lang.reflect.Modifier
-import java.text.Normalizer.Form
 
 @Composable
 fun CameraUI(cameraController: LifecycleCameraController, permissionLauncher : ActivityResultLauncher<Array<String>>,
